@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { 
   BookOpen, 
   Users, 
@@ -34,11 +35,12 @@ const Navbar = () => {
           </a>
           
           <div className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Home</a>
-            <a href="#about" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">About</a>
-            <a href="#courses" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Courses</a>
-            <a href="#testimonials" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Success Stories</a>
-            <a href="#contact" className="bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-orange-700 transition-all shadow-lg shadow-orange-200">
+            <Link to="/" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Home</Link>
+            <a href="/#about" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">About</a>
+            <a href="/#courses" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Courses</a>
+            <a href="/#testimonials" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Success Stories</a>
+            <Link to="/contact" className="text-slate-600 hover:text-orange-600 font-medium transition-colors">Contact us</Link>
+            <a href="/#contact" className="bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-orange-700 transition-all shadow-lg shadow-orange-200">
               Enroll Now
             </a>
           </div>
@@ -64,36 +66,43 @@ const Navbar = () => {
             className="md:hidden bg-white border-b border-slate-100 overflow-hidden shadow-xl"
           >
             <div className="px-4 pt-2 pb-8 space-y-1">
-              <a 
-                href="#home" 
+              <Link 
+                to="/" 
                 onClick={() => setIsOpen(false)} 
                 className="block px-4 py-3 text-slate-600 font-semibold hover:bg-orange-50 hover:text-orange-600 rounded-xl transition-all"
               >
                 Home
-              </a>
+              </Link>
               <a 
-                href="#about" 
+                href="/#about" 
                 onClick={() => setIsOpen(false)} 
                 className="block px-4 py-3 text-slate-600 font-semibold hover:bg-orange-50 hover:text-orange-600 rounded-xl transition-all"
               >
                 About
               </a>
               <a 
-                href="#courses" 
+                href="/#courses" 
                 onClick={() => setIsOpen(false)} 
                 className="block px-4 py-3 text-slate-600 font-semibold hover:bg-orange-50 hover:text-orange-600 rounded-xl transition-all"
               >
                 Courses
               </a>
               <a 
-                href="#testimonials" 
+                href="/#testimonials" 
                 onClick={() => setIsOpen(false)} 
                 className="block px-4 py-3 text-slate-600 font-semibold hover:bg-orange-50 hover:text-orange-600 rounded-xl transition-all"
               >
                 Success Stories
               </a>
+              <Link 
+                to="/contact" 
+                onClick={() => setIsOpen(false)} 
+                className="block px-4 py-3 text-slate-600 font-semibold hover:bg-orange-50 hover:text-orange-600 rounded-xl transition-all"
+              >
+                Contact us
+              </Link>
               <a 
-                href="#contact" 
+                href="/#contact" 
                 onClick={() => setIsOpen(false)} 
                 className="block w-full mt-4 bg-orange-600 text-white px-6 py-4 rounded-2xl font-bold text-center shadow-lg shadow-orange-200 active:scale-[0.98] transition-all"
               >
@@ -122,17 +131,17 @@ const Hero = () => {
               <span>Admissions Open for 2026-27</span>
             </div>
             <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight mb-6">
-              Igniting Minds, <br />
-              <span className="text-orange-600 italic">Empowering Future</span>
+              Empowering Minds, <br />
+              <span className="text-orange-600 italic">Igniting Future</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 max-w-lg leading-relaxed">
               Join the most trusted coaching center where we nurture talent and guide students towards academic excellence and a bright professional future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contact" className="flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-700 transition-all shadow-xl shadow-orange-200 group">
+              <Link to="/contact" className="flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-700 transition-all shadow-xl shadow-orange-200 group">
                 Start Your Journey
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
               <a href="#courses" className="flex items-center justify-center gap-2 bg-white text-slate-700 border-2 border-slate-200 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all">
                 View Courses
               </a>
@@ -153,7 +162,7 @@ const Hero = () => {
                 <div className="flex items-center gap-1 text-amber-500">
                   {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="text-sm text-slate-600 font-medium">Trusted by 2,000+ Students</p>
+                <p className="text-sm text-slate-600 font-medium">Trusted by 500+ Students</p>
               </div>
             </div>
           </motion.div>
@@ -346,22 +355,16 @@ const Courses = () => {
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Rahul Sharma",
-      role: "IIT Bombay, 2025",
+      name: "Rishi Vishakarma",
+      role: "SSC 80% 2025",
       text: "Rising Stars changed my perspective on learning. The teachers didn't just help me solve problems; they taught me how to think.",
-      image: "https://picsum.photos/seed/rahul/100/100"
+      image: "https://picsum.photos/seed/rishi/100/100"
     },
     {
-      name: "Priya Patel",
-      role: "AIIMS Delhi, 2024",
-      text: "The personalized attention I received here was unmatched. The mock tests were exactly like the real NEET exam.",
-      image: "https://picsum.photos/seed/priya/100/100"
-    },
-    {
-      name: "Ananya Gupta",
-      role: "98.5% in CBSE Boards",
-      text: "The study material is so well-structured that I didn't need any other books. Highly recommended for board prep!",
-      image: "https://picsum.photos/seed/ananya/100/100"
+      name: "Tanvi Kiranje",
+      role: "SSC 98% 2025",
+      text: "The personalized attention I received here was unmatched. The mock tests were exactly like the real SSC exam.",
+      image: "https://picsum.photos/seed/tanvi/100/100"
     }
   ];
 
@@ -411,22 +414,53 @@ const Testimonials = () => {
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    setIsSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/mvzvrklj", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        e.currentTarget.reset();
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          setError(data.errors.map((error: any) => error.message).join(", "));
+        } else {
+          setError("Oops! There was a problem submitting your form");
+        }
+      }
+    } catch (err) {
+      setError("Oops! There was a problem submitting your form");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-24 bg-orange-600 relative overflow-hidden">
+    <section id="contact" className="py-16 lg:py-24 bg-orange-600 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <h2 className="text-white font-bold tracking-widest uppercase text-sm mb-4">Contact Us</h2>
             <p className="text-4xl lg:text-5xl font-extrabold text-white mb-8">Ready to Start Your Success Story?</p>
@@ -438,7 +472,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-white/60">Call Us</p>
-                  <p className="text-xl font-semibold">+91 98765 43210</p>
+                  <p className="text-lg sm:text-xl font-semibold">+91 96647 76387</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-white/90">
@@ -447,7 +481,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-white/60">Email Us</p>
-                  <p className="text-xl font-semibold">info@risingstars.edu</p>
+                  <p className="text-lg sm:text-xl font-semibold break-all">risingstarstutorials24@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-white/90">
@@ -456,13 +490,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-white/60">Visit Us</p>
-                  <p className="text-xl font-semibold">123 Education Hub, Mumbai, India</p>
+                  <p className="text-lg sm:text-xl font-semibold">Mauli Prasad Society, Near Anjali Medical, Sakinaka-72</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-2xl">
+          <div className="bg-white p-6 sm:p-10 rounded-3xl shadow-2xl">
             {submitted ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -478,32 +512,41 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-sm font-bold text-slate-700">Student Name</label>
-                      <input required type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="John Doe" />
+                      <input required name="name" type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="John Doe" />
                     </div>
                     <div className="space-y-1">
                       <label className="text-sm font-bold text-slate-700">Phone Number</label>
-                      <input required type="tel" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="+91..." />
+                      <input required name="phone" type="tel" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="+91..." />
                     </div>
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-bold text-slate-700">Email Address</label>
-                    <input required type="email" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="john@example.com" />
+                    <input required name="email" type="email" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="john@example.com" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-bold text-slate-700">Select Course</label>
-                    <select className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all">
-                      <option>Primary Program (1-4)</option>
-                      <option>Preparatory Program (5-7)</option>
-                      <option>Foundation Program (8-10)</option>
-                      <option>Other</option>
+                    <select name="course" className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all">
+                      <option value="Primary Program (1-4)">Primary Program (1-4)</option>
+                      <option value="Preparatory Program (5-7)">Preparatory Program (5-7)</option>
+                      <option value="Foundation Program (8-10)">Foundation Program (8-10)</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                   <div className="space-y-1">
                     <label className="text-sm font-bold text-slate-700">Message (Optional)</label>
-                    <textarea rows={3} className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="Tell us more..."></textarea>
+                    <textarea name="message" rows={3} className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all" placeholder="Tell us more..."></textarea>
                   </div>
-                  <button type="submit" className="w-full bg-orange-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition-all shadow-lg shadow-orange-100">
-                    Submit Inquiry
+                  
+                  {error && (
+                    <p className="text-red-500 text-sm font-medium">{error}</p>
+                  )}
+
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="w-full bg-orange-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition-all shadow-lg shadow-orange-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Sending..." : "Submit Inquiry"}
                   </button>
                 </form>
               </>
@@ -519,56 +562,41 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div className="col-span-1 lg:col-span-1">
             <a href="#home" className="flex items-center gap-2 mb-6">
               <Logo className="h-12" variant="dark" />
             </a>
             <p className="text-slate-400 leading-relaxed mb-6">
-              Empowering minds and igniting futures through quality education and dedicated mentorship since 2010.
+              Empowering minds and igniting future through quality education and dedicated mentorship since 2010.
             </p>
           </div>
           
           <div>
             <h4 className="text-lg font-bold mb-6">Quick Links</h4>
             <ul className="space-y-4 text-slate-400">
-              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#testimonials" className="hover:text-white transition-colors">Success Stories</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><a href="/#about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/#testimonials" className="hover:text-white transition-colors">Success Stories</a></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact us</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-bold mb-6">Programs</h4>
             <ul className="space-y-4 text-slate-400">
-              <li><a href="#primary" className="hover:text-white transition-colors">Primary (1-4)</a></li>
-              <li><a href="#preparatory" className="hover:text-white transition-colors">Preparatory (5-7)</a></li>
-              <li><a href="#foundation" className="hover:text-white transition-colors">Foundation (8-10)</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">Enroll Now</a></li>
+              <li><a href="/#primary" className="hover:text-white transition-colors">Primary (1-4)</a></li>
+              <li><a href="/#preparatory" className="hover:text-white transition-colors">Preparatory (5-7)</a></li>
+              <li><a href="/#foundation" className="hover:text-white transition-colors">Foundation (8-10)</a></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Enroll Now</Link></li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-bold mb-6">Newsletter</h4>
-            <p className="text-slate-400 mb-4">Get updates on admissions and exams.</p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Email" />
-              <button type="submit" className="bg-orange-600 p-2 rounded-lg hover:bg-orange-700 transition-all">
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </form>
           </div>
         </div>
         
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-          <div className="text-center md:text-left">
-            <p>© 2026 Rising Stars Coaching. All rights reserved.</p>
+        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-center items-center gap-4 text-slate-500 text-sm text-center">
+          <div>
+            <p>© 2026 Rising Stars Tutorials. All rights reserved.</p>
             <p className="mt-1 text-slate-600">Developed and Designed with ❤️ by Nihar Kamble</p>
-          </div>
-          <div className="flex gap-8">
-            <a href="#contact" className="hover:text-white">Privacy Policy</a>
-            <a href="#contact" className="hover:text-white">Terms of Service</a>
           </div>
         </div>
       </div>
@@ -578,16 +606,25 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-orange-100 selection:text-orange-900">
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <Courses />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-white font-sans selection:bg-orange-100 selection:text-orange-900">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <Features />
+                <Courses />
+                <Testimonials />
+                <Contact />
+              </>
+            } />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }

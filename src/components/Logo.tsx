@@ -74,7 +74,7 @@ export const Logo: React.FC<LogoProps> = ({ className = "h-12 w-auto", variant =
           <span className="text-orange-600">RISING</span> STARS
         </span>
         <span className={`text-[8px] font-bold tracking-[0.2em] uppercase ${variant === 'light' ? 'text-slate-500' : 'text-slate-400'}`}>
-          Igniting Minds • Empowering Future
+          Empowering Minds • Igniting Future
         </span>
       </div>
     </div>
